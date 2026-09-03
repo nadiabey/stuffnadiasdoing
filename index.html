@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stuff Nadia's Doing - YouTube/Instagram companion site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+body{
+background-color: #abd1ee;
+padding-top: 1%;
+padding-left: 5%;
+padding-right: 5%;
+padding-bottom: 2%;
+color: #001d4c;
+}
+.header{
+text-align: center;
+font-family: "Imperial Script";
+}
+.main{
+text-align: justify;
+font-family: "Rubik";
+padding-top: 1%;
+padding-left: 5%;
+padding-right: 5%;
+}
+a {
+color: #494949;
+font-family: "Rubik";
+}
+a:hover {
+  color: #ff5d73;
+}
+</style>
+<div class="header"><p> <b style="font-size:4em;">Nadia Bey</b><br>
+<b style="font-size:3em;">public health & pop culture</b></p></div>
+<div class="main">
+<p>Welcome! Here you'll find book reviews and musings on culture and research.
+<div id="blog-container"></div>
+<button id="prev" onclick="changePage(-1)">Prev</button> <button id="next" onclick="changePage(1)">Next</button></center>
+</div>
+<script>
+let currentPage = 1;
+async function loadPosts(page) {
+  const response = await fetch(`/api/posts?page=${page}`);
+  const posts = await response.json();
+
+  const container = document.getElementById('blog-container');
+  container.innerHTML = '';
+
+  if(posts.length === 0) {
+    container.innerHTML = '<p>No posts.</p>';
+    return;
+  }
+
+  if (posts.length < 5) {
+    if (page === 1){
+    document.getElementById('prev').style.display = 'none';
+    }
+    document.getElementById('next').style.display = 'none';
+  }
+
+  posts.forEach(post => {
+    const article = document.createElement('article');
+    article.innerHTML = `<h3><a href="/post/${post.id}">${post.title}</a></h3>
+    <p>Published: ${new Date(post.created_at * 1000).toLocaleString('en-US', {timeZone: 'America/New_York'})}</p>
+    <p>${post.content.substring(0, 100)}...</p>
+    <hr>`;
+    container.appendChild(article);
+    });
+    currentPage = page;
+}
+function changePage(direction) {
+const newPage = currentPage + direction;
+if (newPage < 1) return;
+loadPosts(newPage);
+}
+loadPosts(1);
+</script>
+</body>
+<footer><center><h3><a href="https://youtube.com/@nadiaabey" target="_blank">YouTube</a> | <a href="https://instagram.com/stuffnadiasdoing" target="_blank">Instagram</a></h3></center></footer>
+</html>
