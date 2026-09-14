@@ -2,10 +2,6 @@ import { Database } from "@cloudflare/d1";
 import { Resend } from "resend";
 import { env } from "cloudflare:workers";
 
-interface Env {
-  posts: Database;
-};
-
 const SECRET_KEY = env.TURN_KEY;
 const RESEND_KEY = env.RESEND_KEY;
 const resend = new Resend(RESEND_KEY);
