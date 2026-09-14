@@ -2,7 +2,7 @@ export async function onRequestOptions(context) {
   return new Response(null, {
     status: 204,
     headers: {
-      "Access-Control-Allow-Origin": "https://justforfun.nadiabey.com",
+      "Access-Control-Allow-Origin": "https://creating.nadiabey.com",
       "Access-Control-Allow-Methods": "GET, PUT, POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
       "Access-Control-Max-Age": "86400",

@@ -8,4 +8,11 @@
     "assets": {
       "directory": "_site"
     }
+    "env": {
+    "d1_databases": [{
+    "binding": "posts",
+    "database_name": "snd-posts",
+    "database_id": "3be79949-c8f4-47e3-8a37-3c5e8286c9c0",
+    },]
+    }
   }

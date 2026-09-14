@@ -47,7 +47,7 @@ export async function onRequestGet({ params, env }) {
       formData.append('image_url', document.getElementById('imageFile').value); //
       formData.append('id',${post.id});
 
-      const response = await fetch('https://justforfun.nadiabey.com/api/admin/edit', {
+      const response = await fetch('/api/admin/edit', {
         method: 'POST',
         body: formData,
         credentials: 'include'
