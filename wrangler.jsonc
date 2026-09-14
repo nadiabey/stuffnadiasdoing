@@ -7,7 +7,7 @@
     },
     "assets": {
       "directory": "_site"
-    }
+    },
     "env": {
     "d1_databases": [{
     "binding": "posts",
