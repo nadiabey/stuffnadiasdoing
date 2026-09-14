@@ -1,0 +1,26 @@
+body{
+background-color: #abd1ee;
+padding-top: 1%;
+padding-left: 5%;
+padding-right: 5%;
+padding-bottom: 2%;
+color: #001d4c;
+}
+.header{
+text-align: center;
+font-family: "Imperial Script";
+}
+.main{
+text-align: justify;
+font-family: "Rubik";
+padding-top: 1%;
+padding-left: 5%;
+padding-right: 5%;
+}
+a {
+color: #494949;
+font-family: "Rubik";
+}
+a:hover {
+  color: #ff5d73;
+}
